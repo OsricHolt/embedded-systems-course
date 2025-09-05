@@ -2,6 +2,20 @@
 
 Following along with Modern Embedded Systems Programming by Quantum Leaps on YouTube to learn embedded systems programming.
 
+## Course Source:
+https://www.youtube.com/playlist?list=PLPW8O6W-1chwyTzI3BHwBLbGQoPFxPAPM
+
+## Skills Learning:
+- C programming for microcontrollers
+- Hardware interfacing
+- Disassembly
+- JTAG/SWD Debugging
+- Datasheet Navigation
+- Interrupts
+- Real-Time Operating Systems
+- Object-Oriented Programming
+- State Machines
+
 ## Lessons Completed:
 - Lesson 1: Completed
 - Lesson 2: Completed
@@ -16,17 +30,3 @@ Following along with Modern Embedded Systems Programming by Quantum Leaps on You
 - Lesson 11: Completed
 - Lesson 12: Completed
 - Lesson 13: In Progress
-
-## Skills Learning:
-- C programming for microcontrollers
-- Hardware interfacing
-- Disassembly
-- JTAG/SWD Debugging
-- Datasheet Navigation
-- Interrupts
-- Real-Time Operating Systems
-- Object-Oriented Programming
-- State Machines
-
-## Course Source:
-https://www.youtube.com/playlist?list=PLPW8O6W-1chwyTzI3BHwBLbGQoPFxPAPM
