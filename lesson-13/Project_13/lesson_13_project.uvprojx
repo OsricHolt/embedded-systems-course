@@ -471,6 +471,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Output</GroupName>
+          <Files>
+            <File>
+              <FileName>lesson_13_project.map</FileName>
+              <FileType>9</FileType>
+              <FilePath>.\Listings\lesson_13_project.map</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>
