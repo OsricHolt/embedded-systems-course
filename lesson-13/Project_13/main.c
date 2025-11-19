@@ -8,13 +8,27 @@
 #define LED_GREEN (1U << 3)
 #define GPIOF_AHB_BITS ((unsigned long volatile *) GPIOF_AHB) // Casting GPIOF_AHB_BITS to a pointer to the address defined by the macro, GPIOF_AHB
 
+int16_t x = -1;
+uint32_t y = LED_RED | LED_GREEN;
+
+int16_t sqr[] = {
+    1*1,
+    2*2,
+    3*3,
+    4*4
+};
+
 // typedef struct Point Point;
 typedef struct /*__PACKED*/ {               // __PACKED = __attribute__((packed,aligned(1)))
     uint8_t y;
     uint16_t x;
 } Point;
 
-Point p1, p2;
+Point p1 = {
+    123U,
+    0x1234U
+};
+Point p2;
 
 typedef struct {
     Point top_left;
@@ -25,7 +39,12 @@ typedef struct {
     Point corners[3];
 } Triangle;
 
-Window w, w2; // variable of structure types are instances. 'w' and 't' are called instances of 'Window' and 'Triangle' structs
+Window w = {
+ {123U, 0x1234U },
+{234U, 0x6789U }  
+};
+
+Window w2; // variable of structure types are instances. 'w' and 't' are called instances of 'Window' and 'Triangle' structs
 Triangle t;
 
 int main() {
