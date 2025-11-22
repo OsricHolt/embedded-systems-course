@@ -29,4 +29,6 @@ https://www.youtube.com/playlist?list=PLPW8O6W-1chwyTzI3BHwBLbGQoPFxPAPM
 - Lesson 10: Completed
 - Lesson 11: Completed
 - Lesson 12: Completed
-- Lesson 13: In Progress..
+- Lesson 13: Completed
+- Lesson 14: In Progress
+

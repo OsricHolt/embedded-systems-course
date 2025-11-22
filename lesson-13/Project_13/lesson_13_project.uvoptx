@@ -196,7 +196,7 @@
         <Mm>
           <WinNumber>2</WinNumber>
           <SubType>0</SubType>
-          <ItemText>&amp;p1</ItemText>
+          <ItemText>0x1FFFFFFF</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow2>
