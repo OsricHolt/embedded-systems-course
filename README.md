@@ -33,5 +33,6 @@ https://www.youtube.com/playlist?list=PLPW8O6W-1chwyTzI3BHwBLbGQoPFxPAPM
 - Lesson 14: Completed
 - Lesson 15: Completed
 - Lesson 16: Completed
+- Lesson 17: In Progress
 
 
