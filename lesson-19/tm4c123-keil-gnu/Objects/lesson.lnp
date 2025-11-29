@@ -1,0 +1,1 @@
+-T ./lesson.ld -mthumb -mthumb-interwork -o "./Objects/lesson.elf" "./objects/main.o" "./objects/bsp.o" "./objects/startup_tm4c123gh6pm.o" "./objects/system_tm4c123.o" "./objects/startup_tm4c123gh6pm_1.o" "./objects/system_tm4c123_1.o" -nostartfiles -lm -specs=nosys.specs -specs=nano.specs -Wl,-Map,Listings/lesson.map,--cref,--gc-sections

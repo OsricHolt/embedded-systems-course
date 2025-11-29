@@ -1,0 +1,1 @@
+-mthumb-interwork -o "./lesson.elf" "./main.o" "./bsp.o" "./startup_tm4c123gh6pm.o" "./system_tm4c123.o" "./startup_tm4c123gh6pm_1.o" "./system_tm4c123_1.o" -nostartfiles -lm

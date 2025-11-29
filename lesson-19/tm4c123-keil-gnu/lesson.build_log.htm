@@ -1,0 +1,131 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.42.0.0
+Copyright (C) 2025 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Os Holt
+The Math Yogis
+User-based license: Keil MDK Community (non-commercial free of charge)
+Valid until: May 31 2033. Cached until: Dec 5 2025
+ 
+Tool Versions:
+Toolchain:       Keil MDK Community (non-commercial free of charge  Version: 5.42.0.0
+Toolchain Path:  C:\Users\OSGOD\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.23
+Assembler:       Armasm.exe V6.23
+Linker/Locator:  ArmLink.exe V6.23
+Library Manager: ArmAr.exe V6.23
+Hex Converter:   FromElf.exe V6.23
+CPU DLL:         SARMCM3.DLL V5.42.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.14.0
+Dialog DLL:      TCM.DLL V1.56.6.0
+ 
+<h2>Project:</h2>
+C:\Users\OSGOD\Desktop\Embedded Systems\Quantum Leap\Lessons\lesson-19\tm4c123-keil-gnu\lesson.uvprojx
+Project File Date:  11/28/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.23', folder: 'C:\Users\OSGOD\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Debug'
+Note: source file '.\bsp.h' - object file renamed from '.\bsp.o' to '.\bsp_1.o'.
+Note: source file '..\ek-tm4c123gxl\system_TM4C123.h' - object file renamed from '.\system_TM4C123.o' to '.\system_tm4c123_1.o'.
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(362): error: non-ASM statement in naked function is not supported
+  362 |     extern int main(void);
+      |     ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(360): note: attribute is here
+  360 | __attribute__((naked)) void Reset_Handler(void);
+      |                ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(411): error: non-ASM statement in naked function is not supported
+  411 |     assert_failed("NMI", 1U);
+      |     ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(407): note: attribute is here
+  407 | __attribute__((naked)) void NMI_Handler(void);
+      |                ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(418): error: non-ASM statement in naked function is not supported
+  418 |     assert_failed("HardFault", 1U);
+      |     ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(414): note: attribute is here
+  414 | __attribute__((naked)) void HardFault_Handler(void);
+      |                ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(425): error: non-ASM statement in naked function is not supported
+  425 |     assert_failed("MemManage", 1U);
+      |     ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(421): note: attribute is here
+  421 | __attribute__((naked)) void MemManage_Handler(void);
+      |                ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(432): error: non-ASM statement in naked function is not supported
+  432 |     assert_failed("BusFault", 1U);
+      |     ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(428): note: attribute is here
+  428 | __attribute__((naked)) void BusFault_Handler(void);
+      |                ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(439): error: non-ASM statement in naked function is not supported
+  439 |     assert_failed("UsageFault", 1U);
+      |     ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(435): note: attribute is here
+  435 | __attribute__((naked)) void UsageFault_Handler(void);
+      |                ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(446): error: non-ASM statement in naked function is not supported
+  446 |     assert_failed("Default", 1U);
+      |     ^
+../ek-tm4c123gxl/gnu/startup_TM4C123GH6PM.c(442): note: attribute is here
+  442 | __attribute__((naked)) void Default_Handler(void);
+      |                ^
+7 errors generated.
+compiling startup_TM4C123GH6PM.c...
+main.c(20): error: call to undeclared function 'SysTick_Handler'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   20 |     SysTick_Handler();
+      |     ^
+main.c(24): error: no member named 'DATA_Bits' in 'GPIOA_Type'
+   24 |         GPIOF_AHB->DATA_Bits[LED_GREEN] = LED_GREEN;
+      |         ~~~~~~~~~  ^
+main.c(25): error: no member named 'DATA_Bits' in 'GPIOA_Type'
+   25 |         GPIOF_AHB->DATA_Bits[LED_GREEN] = 0U;
+      |         ~~~~~~~~~  ^
+3 errors generated.
+compiling main.c...
+bsp.c(7): error: non-ASM statement in naked function is not supported
+    7 |     NVIC_SystemReset(); /* reset the system */
+      |     ^
+C:/Users/OSGOD/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include\core_cm4.h(1729): note: expanded from macro 'NVIC_SystemReset'
+ 1729 |   #define NVIC_SystemReset            __NVIC_SystemReset
+      |                                       ^
+bsp.c(5): note: attribute is here
+    5 | __attribute__((naked)) void assert_failed (char const *file, int line) {
+      |                ^
+bsp.c(11): error: no member named 'DATA_Bits' in 'GPIOA_Type'
+   11 |     GPIOF_AHB->DATA_Bits[LED_BLUE] ^= LED_BLUE;
+      |     ~~~~~~~~~  ^
+2 errors generated.
+compiling bsp.c...
+".\lesson.axf" - 12 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.2.0.pack
+                ARM::CMSIS@6.2.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.1
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil::TM4C_DFP@1.1.0
+                Texas Instruments Tiva C Series Device Support and Examples
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Debug
+  C:/Users/OSGOD/AppData/Local/Arm/Packs/ARM/CMSIS/6.2.0/CMSIS/Core/Include
+  C:/Users/OSGOD/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.1
+Target not created.
+Build Time Elapsed:  00:00:00
+</pre>
+</body>
+</html>
