@@ -1,0 +1,4 @@
+Notes:
+The main loop is the "Background" loop while the Interrupt Service Routine (ISR) is the "Foreground"
+Just like lesson 20, make shared variables volatile and disable interrupts when changing shared variables
+Operations with strict time constraints must be in foreground since background timing is inconsistent
