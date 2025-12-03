@@ -2,14 +2,11 @@
 * MInimal Real-time Operating System (MIROS)
 * version 0.23 (matching lesson 23)
 *
-* This software is a teaching aid to illustrate the concepts underlying
-* a Real-Time Operating System (RTOS). The main goal of the software is
-* simplicity and clear presentation of the concepts, but without dealing
-* with various corner cases, portability, or error handling. For these
-* reasons, the software is generally NOT intended or recommended for use
-* in commercial applications.
+* This software is a minimal Real-Time Operating System and was created as an
+* exercise to understand the underlying structure of RTOS. Main concepts are 
+* based on Miros Samek's Quantum Leap Embedded Systems course.
 *
-* Copyright (C) 2018 Miro Samek. All Rights Reserved.
+* Copyright (C) 2025 Osric Holt. All Rights Reserved.
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -25,9 +22,8 @@
 * along with this program. If not, see <https://www.gnu.org/licenses/>.
 *
 * Contact Information:
-* https://www.state-machine.com
+* https://www.linkedin.com/in/osric-holt/
 *
-* Editted by Osric Holt
 ****************************************************************************/
 
 
@@ -44,7 +40,7 @@ typedef void (*OSThreadHandler)(); /* Pointer to function returning void (1-line
 
 void OSThread_start(
     OSThread *me,
-    OSThreadHandler theradHandler, /* Typedef*/
+    OSThreadHandler threadHandler, /* Typedef to a pointer -> fxn no output null args*/
     void *stkSto, uint32_t stkSize); /* Stack parameters (and others as added) */
         
 
