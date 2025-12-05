@@ -34,9 +34,13 @@
     OSThreadHandler threadHandler, /* Typedef to a pointer -> fxn no output null args*/
     void *stkSto, uint32_t stkSize){ /* Stack parameters (and others as added) */
         
-    uint32_t *sp = (uint32_t *)((((uint32_t)stkSto + stkSize) / 8) * 8); /* start from the end of stack */
-    // div by 8 then mult by 8 aligns addresses since we are doing pointer arithmetic
-    // Clearing last 3 bits means we are a multiple of 8 and hence counting by 8's
+    /* start from the end of stack 
+    *  div by 8 then mult by 8 aligns addresses since we are doing pointer arithmetic
+    *  Clearing last 3 bits means we are a multiple of 8 and hence counting by 8's 
+    */
+    uint32_t *sp = (uint32_t *)((((uint32_t)stkSto + stkSize) / 8) * 8); 
+    uint32_t *stk_limit;
+    
     *(--sp) = (1U << 24); /* xPSR */
     *(--sp) = (uint32_t)&threadHandler; /* PC */
     *(--sp) = 0x0000000EU; /* LR */
@@ -54,6 +58,30 @@
     *(--sp) = 0x00000006U; /* R6 */
     *(--sp) = 0x00000005U; /* R5 */
     *(--sp) = 0x00000004U; /* R4 */
+    
+    /* save the top of the stack in the thread's attribute */
+    me->sp = sp;
+    
+    /* round up the bottom of the stack to the 8-byte boundary */
+    /* Case 1: already aligned. 4th bit decreases by 1, then shift right 3
+    *  discarding junk. Then add the value back and realign. Case 2: reduce
+    *  junk by 1 (does nothing) then shift right 3. Add 1 (rounding up) and
+    *  then shift back to 8 byte alignment
+    */
+    stk_limit = (uint32_t *)(((((uint32_t)stkSto - 1U) / 8) + 1U) * 8);
+    
+    /* pre-fill the unused part of the stack with 0xDEADBEEF */
+    /* since sp is a pointer, this is pointer arithemetic. Then
+    *  dereference pointer to write 0xDEADBEEF. Continue until
+    *  reaching stk_limit.
+    */
+    for (sp = sp - 1U; sp >= stk_limit; --sp) {
+        *sp = 0xDEADBEEF;
+    }
 
+}
+    
+void PendSV_Handler(void) {
+    
 }
 

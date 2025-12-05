@@ -29,6 +29,7 @@
 
 #ifndef __MIROS_H__
 #define __MIROS_H__
+#include <stdint.h>
 
 /* Thread Control Block (TCB) */
 typedef struct {
@@ -38,7 +39,7 @@ typedef struct {
 
 typedef void (*OSThreadHandler)(); /* Pointer to function returning void (1-line function)*/
 
-void OSThread_start(
+void OSThread_start( /* function to fabricate register context */
     OSThread *me,
     OSThreadHandler threadHandler, /* Typedef to a pointer -> fxn no output null args*/
     void *stkSto, uint32_t stkSize); /* Stack parameters (and others as added) */

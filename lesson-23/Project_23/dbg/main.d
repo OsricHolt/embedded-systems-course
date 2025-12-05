@@ -1,1 +1,1 @@
-./dbg/main.o: main.c bsp.h
+./dbg/main.o: main.c miros.h bsp.h
