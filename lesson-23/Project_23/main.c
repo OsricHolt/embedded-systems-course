@@ -30,6 +30,7 @@ void main_blinky2() {
 /* background code: sequential with blocking version */
 int main(void) {
     BSP_init();
+    OS_Init();
     
     /* Fabricate Cortex-M ISR stack frame for blinky1 (tricking the CPU to think we're returning from an interrupt*/
     OSThread_start(&blinky1,

@@ -8,7 +8,7 @@ Copyright (C) 2025 ARM Ltd and ARM Germany GmbH. All rights reserved.
 License Information: Os Holt
 The Math Yogis
 User-based license: Keil MDK Community (non-commercial free of charge)
-Valid until: May 31 2033. Cached until: Dec 9 2025
+Valid until: May 31 2033. Cached until: Dec 11 2025
  
 Tool Versions:
 Toolchain:       Keil MDK Community (non-commercial free of charge  Version: 5.42.0.0
@@ -25,16 +25,40 @@ Dialog DLL:      TCM.DLL V1.56.6.0
  
 <h2>Project:</h2>
 C:\Users\OSGOD\Desktop\Embedded Systems\Quantum Leap\Lessons\lesson-23\Project_23\lesson_23_project.uvprojx
-Project File Date:  12/01/2025
+Project File Date:  12/05/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.23', folder: 'C:\Users\OSGOD\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'dbg'
+miros.c(103): error: expected '(' after 'asm'
+  103 | void PendSV_Handler(void) {
+      | ^
+miros.c(102): error: expected ';' after top-level asm block
+  102 | __ASM
+      |      ^
+      |      ;
+miros.c(104): error: use of undeclared identifier 'IMPORT'
+  104 |     IMPORT OS_curr
+      |     ^
+miros.c(120): error: unknown type name 'PendSV_restore'
+  120 | PendSV_restore
+      | ^
+miros.c(122): error: expected ';' after top level declarator
+  122 |     LDR           r1,=OS_next
+      |        ^
+      |        ;
+miros.c(134): error: expected identifier or '('
+  134 | 0x00000898 B662      CPSIE         I
+      | ^
+miros.c(135): error: extraneous closing brace ('}')
+  135 |    114: } 
+      |         ^
+miros.c(136): error: extraneous closing brace ('}')
+  136 | }
+      | ^
+8 errors generated.
 compiling miros.c...
-compiling main.c...
-linking...
-Program Size: Code=2460 RO-data=924 RW-data=4 ZI-data=1476  
-".\dbg\lesson_23_project.axf" - 0 Error(s), 0 Warning(s).
+".\dbg\lesson_23_project.axf" - 8 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -47,6 +71,7 @@ Package Vendor: Keil
   C:/Users/OSGOD/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
 
 <h2>Collection of Component Files used:</h2>
+Target not created.
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

@@ -338,7 +338,7 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls>-Wno-declaration-after-statement</MiscControls>
+              <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
               <IncludePath>..\ek-tm4c123gxl;..\CMSIS\Include</IncludePath>

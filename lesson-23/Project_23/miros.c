@@ -28,7 +28,25 @@
 
 #include <stdint.h>
 #include "miros.h"
- 
+#include "TM4C123GH6PM.h" /* the TM4C MCU Peripheral Access Layer (TI) */
+
+
+/* pointer is after * since we want the pointer to be volatile */
+OSThread * volatile OS_curr; /* pointer to the current thread */
+OSThread * volatile OS_next; /* pointer to the next thread to run */
+
+void OS_Init(void){
+    /* sent the PENDSV interrupt priority to the lowest level (last interrupt) */
+    *(uint32_t volatile *) 0xE000ED20 |= (0xFFU << 16);
+}
+
+void OS_sched(void){
+    /* OS_next = ... */
+    if (OS_next != OS_curr) {
+        *(uint32_t volatile *) 0xE000ED04 |= (0x1U << 28); /* triggers PendSV */
+    }
+}
+
  void OSThread_start(
     OSThread *me,
     OSThreadHandler threadHandler, /* Typedef to a pointer -> fxn no output null args*/
@@ -80,8 +98,40 @@
     }
 
 }
-    
+
+__ASM;
 void PendSV_Handler(void) {
+    IMPORT OS_curr
+    IMPORT OS_next
     
+    /*     __disable_irq(); */
+    CPSID         I
+    /* if (OS_curr != (OSThread *) 0) { */
+    LDR           r0,=OS_curr
+    LDR           r0,[r0,#0x00]
+    CBZ           r0,PendSV_restore
+    /* push registers R4-R11 on the stack */ 
+    PUSH          {r4-r11}
+    /* OS_curr->sp = sp; // this is SP */ 
+    LDR           r1,=OS_curr
+    LDR           r1,[r1,#0x00]
+    STR           sp,[r1,#0x00]
+   108:     } /* saves context of current thread */ 
+PendSV_restore
+    /* sp = OS_next->sp; */
+    LDR           r1,=OS_next
+    LDR           r1,[r1,#0x00]
+    STR           sp,[r1,#0x00]
+    /* OS_curr = OS_next; */
+   113:  
+    LDR           r0,=OS_next
+    LDR           r1,[r1,#0x00] 
+    LDR           r1,=OS_curr
+    STR           r0,[r1,#0x00] /* I think this is backwards */
+    /* pop registers R4-R11 */ 
+    POP           {r4-r11}
+    /* __enable_irq(); */
+    CPSIE         I
+    B             lr
 }
 

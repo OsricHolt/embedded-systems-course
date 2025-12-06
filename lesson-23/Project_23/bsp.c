@@ -2,6 +2,7 @@
 #include <stdint.h>  /* Standard integers. WG14/N843 C99 Standard */
 
 #include "bsp.h"
+#include "miros.h"
 #include "TM4C123GH6PM.h" /* the TM4C MCU Peripheral Access Layer (TI) */
 
 /* on-board LEDs */
@@ -14,6 +15,10 @@ static uint32_t volatile l_tickCtr;
 /* ISRs  ===============================================*/
 void SysTick_Handler(void) {
     ++l_tickCtr;
+    
+    __disable_irq();
+    OS_sched();
+    __enable_irq();
 }
 
 /* BSP functions ===========================================================*/
@@ -25,6 +30,9 @@ void BSP_init(void) {
 
     SystemCoreClockUpdate();
     SysTick_Config(SystemCoreClock / BSP_TICKS_PER_SEC);
+    
+    /* set the SysTick interrupt priority (highest) */
+    NVIC_SetPriority(SysTick_IRQn, 0U);
 
     __enable_irq();
 }

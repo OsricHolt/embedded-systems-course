@@ -39,6 +39,11 @@ typedef struct {
 
 typedef void (*OSThreadHandler)(); /* Pointer to function returning void (1-line function)*/
 
+void OS_Init(void); /* Sets interrupt priority */
+
+/* this function must be called with interrups DISABLED */
+void OS_sched(void); /* Triggers PendSV for context switching */
+
 void OSThread_start( /* function to fabricate register context */
     OSThread *me,
     OSThreadHandler threadHandler, /* Typedef to a pointer -> fxn no output null args*/
