@@ -60,7 +60,7 @@ void OS_sched(void){
     uint32_t *stk_limit;
     
     *(--sp) = (1U << 24); /* xPSR */
-    *(--sp) = (uint32_t)&threadHandler; /* PC */
+    *(--sp) = (uint32_t)threadHandler; /* PC */
     *(--sp) = 0x0000000EU; /* LR */
     *(--sp) = 0x0000000CU; /* R12 */
     *(--sp) = 0x00000003U; /* R3 */
@@ -98,40 +98,47 @@ void OS_sched(void){
     }
 
 }
-
-__ASM;
+__attribute__ ((naked))
 void PendSV_Handler(void) {
-    IMPORT OS_curr
-    IMPORT OS_next
+    __ASM volatile (
+//    IMPORT OS_curr
+//    IMPORT OS_next
     
     /*     __disable_irq(); */
-    CPSID         I
+    "  CPSID         I                  \n"
+    
     /* if (OS_curr != (OSThread *) 0) { */
-    LDR           r0,=OS_curr
-    LDR           r0,[r0,#0x00]
-    CBZ           r0,PendSV_restore
+    "  LDR           r0,=OS_curr        \n"
+    "  LDR           r0,[r0,#0x00]      \n"
+    "  CBZ           r0,PendSV_restore  \n"
+    
     /* push registers R4-R11 on the stack */ 
-    PUSH          {r4-r11}
+    "  PUSH          {r4-r11}           \n"
+    
     /* OS_curr->sp = sp; // this is SP */ 
-    LDR           r1,=OS_curr
-    LDR           r1,[r1,#0x00]
-    STR           sp,[r1,#0x00]
-   108:     } /* saves context of current thread */ 
-PendSV_restore
+    "  LDR           r1,=OS_curr        \n"
+    "  LDR           r1,[r1,#0x00]      \n"
+    "  MOV           sp,r1              \n" // use MOV to transfer register to register
+    
+    /* } //saves context of current thread */ 
+    "PendSV_restore:                    \n"
     /* sp = OS_next->sp; */
-    LDR           r1,=OS_next
-    LDR           r1,[r1,#0x00]
-    STR           sp,[r1,#0x00]
+    "  LDR           r1,=OS_next        \n"
+    "  LDR           r1,[r1,#0x00]      \n"
+    "  LDR           r0,[r1,#0x00]      \n"
+    "  MOV           sp,r0              \n"
+    
     /* OS_curr = OS_next; */
-   113:  
-    LDR           r0,=OS_next
-    LDR           r1,[r1,#0x00] 
-    LDR           r1,=OS_curr
-    STR           r0,[r1,#0x00] /* I think this is backwards */
+    "  LDR           r0,=OS_next        \n"
+    "  LDR           r0,[r0,#0x00]      \n"
+    "  LDR           r1,=OS_curr        \n"
+    "  STR           r0,[r1,#0x00]      \n" /* store goes in opposite direction */
     /* pop registers R4-R11 */ 
-    POP           {r4-r11}
+    "  POP           {r4-r11}           \n"
     /* __enable_irq(); */
-    CPSIE         I
-    B             lr
+    "  CPSIE         I                  \n"
+    /* return to next thread */
+    "  BX             lr                \n"
+    );
 }
 
