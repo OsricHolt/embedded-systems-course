@@ -40,7 +40,8 @@ https://www.youtube.com/playlist?list=PLPW8O6W-1chwyTzI3BHwBLbGQoPFxPAPM
 - Lesson 21: Completed
 - Lesson 22: Completed 
 - Lesson 23: Completed
-- Lesson 24: Not Started
+- Lesson 24: Completed
+- Lesson 25: Not Started
  
 
 
