@@ -41,7 +41,7 @@ https://www.youtube.com/playlist?list=PLPW8O6W-1chwyTzI3BHwBLbGQoPFxPAPM
 - Lesson 22: Completed 
 - Lesson 23: Completed
 - Lesson 24: Completed
-- Lesson 25: Not Started
+- Lesson 25: In Progress
  
 
 
