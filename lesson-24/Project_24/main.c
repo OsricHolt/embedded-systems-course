@@ -65,8 +65,9 @@ int main(void) {
     //return 0;
 }
 
-// Notes: We context switch by hand
-// 1. use our fake stack pointer and paste it into SP to enter thread 1
-// 2. We save our new stack pointer and R4-R11 into stack 1 and then enter thread 2
-// 3. Repeat step 2 for stack 2 and then paste stack pointer 1 back into SP to resume thread 1 where we left off
-// Repeat steps 2 and 3
+// Notes: Measurements
+// 1. Last activity of thread -> SysTick Begin = 375ns; .375us * 50 ticks*MHz = 20 ticks
+// 2. SysTick duration = 1.8 us; 1.8us * 50 ticks*MHz = 90 ticks
+// 3. Context Switching Time = 1.6us; 1.6us * 50 ticks*MHz = 80 ticks
+// 4. Last activity of thread_curr -> first activity of thread_next = 3.8us; 3.8us * 50 ticks*MHz = 190 ticks
+// 5. RTOS overhead = 3.5us / 1e6us * 100 ticks = .00035 = 0.035% of program

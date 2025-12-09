@@ -1,0 +1,6 @@
+Notes: Measurements
+1. Last activity of thread -> SysTick Begin = 375ns; .375us * 50 ticks*MHz = 20 ticks
+2. SysTick duration = 1.8 us; 1.8us * 50 ticks*MHz = 90 ticks
+3. Context Switching Time = 1.6us; 1.6us * 50 ticks*MHz = 80 ticks
+4. Last activity of thread_curr -> first activity of thread_next = 3.8us; 3.8us * 50 ticks*MHz = 190 ticks
+5. RTOS overhead = 3.5us / 1e6us * 100 ticks = .00035 = 0.035% of program
