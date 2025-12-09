@@ -8,9 +8,9 @@ OSThread blinky1;
 void main_blinky1() {
     while (1) {
         BSP_ledGreenOn();
-        BSP_delay(BSP_TICKS_PER_SEC / 4U);
+//        BSP_delay(BSP_TICKS_PER_SEC / 4U);
         BSP_ledGreenOff();
-        BSP_delay(BSP_TICKS_PER_SEC * 3U / 4U);
+//        BSP_delay(BSP_TICKS_PER_SEC * 3U / 4U);
     }
 }
 
@@ -20,9 +20,9 @@ OSThread blinky2;
 void main_blinky2() {
     while (1) {
         BSP_ledBlueOn();
-        BSP_delay(BSP_TICKS_PER_SEC / 2U);
+//        BSP_delay(BSP_TICKS_PER_SEC / 2U);
         BSP_ledBlueOff();
-        BSP_delay(BSP_TICKS_PER_SEC / 3U);
+//        BSP_delay(BSP_TICKS_PER_SEC / 3U);
 
     }
 }
@@ -33,9 +33,9 @@ OSThread blinky3;
 void main_blinky3() {
     while (1) {
         BSP_ledRedOn();
-        BSP_delay(BSP_TICKS_PER_SEC / 3U);
+//        BSP_delay(BSP_TICKS_PER_SEC / 3U);
         BSP_ledRedOff();
-        BSP_delay(BSP_TICKS_PER_SEC * 3U / 5U);
+//        BSP_delay(BSP_TICKS_PER_SEC * 3U / 5U);
 
     }
 }
